@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-administration-database",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This module allows you to generate .yml files allowing you to administrate your production database (managing databases likephpmyadmin). For the moment the following databases are supported : MYSQL, POSTGRESQL, MONGODB, MARIADB.",
   "keywords": [
     "yeoman-generator",
@@ -9,7 +9,7 @@
   ],
   "homepage": "https://github.com/contribution-jhipster-uga/generator-jhipster-administration-database",
   "author": {
-    "name": "Contribution Jhipster UGA, Julien Courtial, Hugo Gros-Daillo, Cédric Lafrasse, Bastien Terrier (https://github.com/contribution-jhipster-uga/)",
+    "name": "Contribution Jhipster UGA, Julien Courtial, Hugo Gros-Daillon, Cédric Lafrasse, Bastien Terrier (https://github.com/contribution-jhipster-uga/)",
     "email": "contribution.jhipster.uga@gmail.com",
     "url": "https://github.com/contribution-jhipster-uga"
   },
