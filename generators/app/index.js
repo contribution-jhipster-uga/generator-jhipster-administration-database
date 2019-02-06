@@ -36,8 +36,6 @@ module.exports = class extends BaseGenerator {
         };
     }
 
-
-
     writing() {
         // function to use directly template
         this.template = function (source, destination) {
@@ -50,20 +48,6 @@ module.exports = class extends BaseGenerator {
 
         // read config from .yo-rc.json
         this.baseName = this.jhipsterAppConfig.baseName;
-        this.packageName = this.jhipsterAppConfig.packageName;
-        this.packageFolder = this.jhipsterAppConfig.packageFolder;
-        this.clientFramework = this.jhipsterAppConfig.clientFramework;
-        this.clientPackageManager = this.jhipsterAppConfig.clientPackageManager;
-        this.buildTool = this.jhipsterAppConfig.buildTool;
-
-        // use function in generator-base.js from generator-jhipster
-        this.angularAppName = this.getAngularAppName();
-
-        // use constants from generator-constants.js
-        const javaDir = `${jhipsterConstants.SERVER_MAIN_SRC_DIR + this.packageFolder}/`;
-        const resourceDir = jhipsterConstants.SERVER_MAIN_RES_DIR;
-        const webappDir = jhipsterConstants.CLIENT_MAIN_SRC_DIR;
-
 
         var database = ''
         var fs = require('fs');
@@ -72,7 +56,7 @@ module.exports = class extends BaseGenerator {
         database = contentArray['generator-jhipster'].prodDatabaseType;
 
 	switch(database){
-	  case 'mysql': this.log(database);
+	  case 'mysql': this.log('Your current production database is : '+database);
           var appName = this.baseName.toLowerCase() + '-mysql';
 
           fs.appendFileSync('src/main/docker/mysql.yml', `    phpmyadmin:
@@ -87,7 +71,7 @@ module.exports = class extends BaseGenerator {
             PMA_HOSTS: ${appName}`);
 
 			break;
-	  case 'postgresql': this.log(database);
+	  case 'postgresql': this.log('Your current production database is : '+database);
           var appName = this.baseName.toLowerCase() + '-postgresql';
           fs.appendFileSync('src/main/docker/postgresql.yml', `    pgadmin:
         links:
@@ -99,7 +83,7 @@ module.exports = class extends BaseGenerator {
         ports:
           - 3080:80`);
 			break;
-    case 'mongodb': this.log(database);
+    case 'mongodb': this.log('Your current production database is : '+database);
           var appName = this.baseName.toLowerCase() + '-mongodb';
           fs.appendFileSync('src/main/docker/mongodb.yml', `    mongodbmyadmin:
         image: 'mongoclient/mongoclient'
@@ -113,7 +97,7 @@ module.exports = class extends BaseGenerator {
         volumes:
           - ./mongodbclient:/data/db`);
   		break;
-      case 'mariadb': this.log(database);
+      case 'mariadb': this.log('Your current production database is : '+database);
             var appName = this.baseName.toLowerCase() + '-mariadb';
             fs.appendFileSync('src/main/docker/mariadb.yml', `    phpmyadmin:
           image: phpmyadmin/phpmyadmin
@@ -130,40 +114,6 @@ module.exports = class extends BaseGenerator {
 
 	}
 
-        // variable from questions
-
-        // show all variables
-        // this.log('\n--- some config read from config ---');
-        // this.log(`baseName=${this.baseName}`);
-        // this.log(`packageName=${this.packageName}`);
-        // this.log(`clientFramework=${this.clientFramework}`);
-        // this.log(`clientPackageManager=${this.clientPackageManager}`);
-        // this.log(`buildTool=${this.buildTool}`);
-        //
-        // this.log('\n--- some function ---');
-        // this.log(`angularAppName=${this.angularAppName}`);
-        //
-        // this.log('\n--- some const ---');
-        // this.log(`javaDir=${javaDir}`);
-        // this.log(`resourceDir=${resourceDir}`);
-        // this.log(`webappDir=${webappDir}`);
-        //
-        // this.log('\n--- variables from questions ---');
-        // this.log(`\nmessage=${this.message}`);
-        // this.log('------\n');
-
-        if (this.clientFramework === 'angular1') {
-            // this.template('dummy.txt', 'dummy-angular1.txt');
-        }
-        if (this.clientFramework === 'angularX' || this.clientFramework === 'angular2') {
-            // this.template('dummy.txt', 'dummy-angularX.txt');
-        }
-        if (this.buildTool === 'maven') {
-            // this.template('dummy.txt', 'dummy-maven.txt');
-        }
-        if (this.buildTool === 'gradle') {
-            // this.template('dummy.txt', 'dummy-gradle.txt');
-        }
     }
 
     install() {
