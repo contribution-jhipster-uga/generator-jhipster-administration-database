@@ -59,7 +59,7 @@ module.exports = class extends BaseGenerator {
 	  case 'mysql': this.log('Your current production database is : '+database);
           var appName = this.baseName.toLowerCase() + '-mysql';
 
-          fs.appendFileSync('src/main/docker/mysql.yml', `    phpmyadmin:
+          fs.appendFileSync(this.jhipsterConstants.DOCKER_DIR+'mysql.yml', `    phpmyadmin:
         image: phpmyadmin/phpmyadmin
         depends_on:
             - ${appName}
@@ -73,7 +73,7 @@ module.exports = class extends BaseGenerator {
 			break;
 	  case 'postgresql': this.log('Your current production database is : '+database);
           var appName = this.baseName.toLowerCase() + '-postgresql';
-          fs.appendFileSync('src/main/docker/postgresql.yml', `    pgadmin:
+          fs.appendFileSync(this.jhipsterConstants.DOCKER_DIR+'postgresql.yml', `    pgadmin:
         links:
           - ${appName}
         image: dpage/pgadmin4
@@ -85,7 +85,7 @@ module.exports = class extends BaseGenerator {
 			break;
     case 'mongodb': this.log('Your current production database is : '+database);
           var appName = this.baseName.toLowerCase() + '-mongodb';
-          fs.appendFileSync('src/main/docker/mongodb.yml', `    mongodbmyadmin:
+          fs.appendFileSync(this.jhipsterConstants.DOCKER_DIR+'mongodb.yml', `    mongodbmyadmin:
         image: 'mongoclient/mongoclient'
         links:
           - ${appName}
@@ -99,7 +99,7 @@ module.exports = class extends BaseGenerator {
   		break;
       case 'mariadb': this.log('Your current production database is : '+database);
             var appName = this.baseName.toLowerCase() + '-mariadb';
-            fs.appendFileSync('src/main/docker/mariadb.yml', `    phpmyadmin:
+            fs.appendFileSync(this.jhipsterConstants.DOCKER_DIR+'mariadb.yml', `    phpmyadmin:
           image: phpmyadmin/phpmyadmin
           depends_on:
               - ${appName}
