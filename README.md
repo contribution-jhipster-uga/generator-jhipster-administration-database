@@ -5,7 +5,9 @@
 # Introduction
 
 This is a [JHipster](http://jhipster.github.io/) module, that is meant to be used in a JHipster application.
-This module allows you to generate .yml files allowing you to administrate your production database (managing databases likephpmyadmin). For the moment the following databases are supported : MYSQL, POSTGRESQL, MONGODB, MARIADB. The result will be a phpmyadmin like
+This module allows you to generate .yml files allowing you to administrate your production database (managing databases likephpmyadmin). For the moment the following databases are supported : MYSQL, POSTGRESQL, MONGODB, MARIADB. The result will be a phpmyadmin like application.
+
+[alt text](PhpMyAdminExample.png)
 
 # Prerequisites
 
